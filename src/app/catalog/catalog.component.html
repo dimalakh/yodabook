@@ -1,0 +1,15 @@
+<div class="catalog-outer catalog-header">
+  <span class="catalog-header-title">Останні книги</span>
+  <div class="catalog-line">
+    <div class="catalog-line-inner"></div>
+  </div>
+</div>
+<div class="catalog-outer">
+  <div *ngFor="let book of books" class="book-card" routerLink="book">
+    <img src="../assets/book.jpg" alt="Мастер и Маргарита" />
+    <div class="book-card-content">
+      <span class="book-card-title">Мастер и Маргарита</span>
+      <span class="book-card-author">Булгаков М.</span>
+    </div>
+  </div>
+</div>
