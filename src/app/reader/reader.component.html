@@ -1,7 +1,8 @@
 
   <div class="text-page-container">
     <h2>{{ bookTitle}}</h2>
-    <span>
-      {{ bookText }}
+    <span *ngFor="let page of bookText | paginate: { itemsPerPage: 1, currentPage: p }">
+      {{ page }}
     </span>
   </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
