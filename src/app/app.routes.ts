@@ -8,7 +8,7 @@ import { ReaderComponent }             from './reader/reader.component';
 
 const appRoutes: Routes = [
   { path: '', component: CatalogComponent },
-  { path: 'book', component: ReaderComponent },
+  { path: 'book/:id', component: ReaderComponent },
   { path: '**', redirectTo: '' }
 ];
 

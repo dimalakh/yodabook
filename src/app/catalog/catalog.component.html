@@ -5,11 +5,11 @@
   </div>
 </div>
 <div class="catalog-outer">
-  <div *ngFor="let book of books" class="book-card" routerLink="book">
-    <img src="../assets/book.jpg" alt="Мастер и Маргарита" />
+  <div *ngFor="let book of books" class="book-card" [routerLink]="['/book', book.id]">
+    <img src="{{ book.img }}" alt="Мастер и Маргарита" />
     <div class="book-card-content">
-      <span class="book-card-title">Мастер и Маргарита</span>
-      <span class="book-card-author">Булгаков М.</span>
+      <span class="book-card-title">{{ book.title }}</span>
+      <span class="book-card-author">{{ book.author }}</span>
     </div>
   </div>
 </div>

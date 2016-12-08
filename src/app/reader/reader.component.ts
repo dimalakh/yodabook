@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import 'rxjs/add/operator/switchMap';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Params }   from '@angular/router';
+import { Location }                 from '@angular/common';
+
+import { Book } from '../shared/book';
+import { BookService} from '../book.service';
 
 @Component({
   selector: 'reader',
@@ -6,17 +12,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reader.component.sass']
 })
 export class ReaderComponent implements OnInit {
-  bookTitle: string;
-  bookText: any[] = [`Богобоязливим бувши чоловіком, він не раз малював ікони, та й тепер ще можете знайти в Т... церкві його євангеліста Луку. Але все перевершив він, як змалював у церкві на стіні, у правому притворі, святого Петра в день Страшного Суду, з ключами в руках, що виганяє з пекла нечисту силу. Переляканий чорт на тій картині метушився на всі боки,`, ` прочуваючи свою загибель, а визволені з неволі грішники лушпенили та ганяли його батогами, поліняччям та чим запопадя. Коли майстер працював над тією картиною і малював її на великій дерев'яній дошці, чорт з усієї сили намагався перебивати йому, штовхав під руку, вихором здіймав із горна в кузні попіл і засипав ним картину; а проте роботу закінчено, дошку внесено до церкви і вправлено у стіну в притворі, і відтоді чорт заприсягся мститися на ковалеві.` ];
+  book: Book;
 
-  constructor() {
-    this.bookTitle = "Ніч проти різдва";
-    }
+  constructor(
+    private bookService: BookService,
+    private route: ActivatedRoute,
+    private location: Location
+  ){}
 
+  public config = {
+    id: 'custom',
+    itemsPerPage: 1,
+    currentPage: 1
+  };
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.route.params
+      .switchMap((params: Params) => this.bookService.getBook(+params['id']))
+      .subscribe(book => this.book = book);
+}
 
-  }
 
 
 

@@ -13,6 +13,7 @@ import { ReaderComponent } from './reader/reader.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { routing } from './app.routes';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { BookService } from './book.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     NgSemanticModule,
     MaterialModule.forRoot()
   ],
-  providers: [],
+  exports: [ RouterModule ],
+  providers: [BookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
