@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { Ng2PaginationModule } from 'ng2-pagination';
-import { NgSemanticModule } from "ng-semantic";
+import { NgSemanticModule } from 'ng-semantic/ng-semantic';
 
 
 import { AppComponent } from './app.component';
