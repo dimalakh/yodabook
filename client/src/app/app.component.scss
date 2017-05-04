@@ -1,4 +1,11 @@
-$bg-color:orange;
-body{
-    background: $bg-color;
+
+
+.content {
+    display: flex;
+    height: 100vh;
+    width: 10vw;
+}
+
+.sidenav-container {
+    padding: 20px;
 }
