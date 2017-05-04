@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-const db = 'mongodb://localhost/booksdb';
+const db = 'mongodb://localhost/bookdb';
 
 const userRoutes = require('./routes/user.routes');
 const bookRoutes = require('./routes/book.routes');
