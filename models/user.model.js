@@ -12,7 +12,6 @@ const UserSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        unique: true,
         required: true
     },
     books: {
@@ -20,3 +19,5 @@ const UserSchema = new mongoose.Schema({
         ref: 'Book'
     }
 });
+
+module.exports = mongoose.model('User',UserSchema);

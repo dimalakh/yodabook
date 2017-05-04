@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use('/books', bookRoutes);
+app.use('/user', userRoutes);
 
 app.listen(3000, () => {
     console.log('App listen on port 3000');
