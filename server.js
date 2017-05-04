@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const db = 'mongodb://localhost/booksdb';
 
@@ -9,10 +10,21 @@ const User = require('./models/user.model');
 const app = express();
 mongoose.connect(db);
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
 app.get('/books', (req, res) => {
     Book.find({}).exec((err, books) => {
         console.log(books); 
         res.json(books);
+    });
+});
+
+app.post('/book', (req, res) => {
+    Book.create(req.body, (err, book) => {
+        res.send(book);
     });
 });
 
