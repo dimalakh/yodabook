@@ -1,6 +1,8 @@
 const express = require('express');
 const passwordHash = require('password-hash');
+const jwt = require('jsonwebtoken');
 const router = express.Router();
+
 
 const User = require('../models/user.model');
 
@@ -11,7 +13,10 @@ router.post('/login', (req, res) => {
         if(user === null) {
             res.send('user not found');
         } else if(passwordHash.verify(req.body.password, user.password)) {
-            res.json(user);
+            const token = jwt.sign(user, 'CHANGE_THIS_STRING');
+            res.json({
+                'token': token
+            });
         } else {
             res.send('incorrect password');
         }
