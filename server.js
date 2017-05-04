@@ -3,11 +3,25 @@ const mongoose = require('mongoose');
 
 const db = 'mongodb://localhost/booksdb';
 
+const Book = require('./models/book.model');
+const User = require('./models/user.model');
+
 const app = express();
 mongoose.connect(db);
 
-app.get('/', (req, res) => {
-    res.send('Hola');
+app.get('/books', (req, res) => {
+    Book.find({}).exec((err, books) => {
+        console.log(books); 
+        res.json(books);
+    });
+});
+
+app.get('/book/:id', (req, res) => {
+    Book.findOne({
+        id: req.params.id
+    }).exec((err, book) => {
+        res.json(book);
+    });
 });
 
 app.listen(3000, () => {
