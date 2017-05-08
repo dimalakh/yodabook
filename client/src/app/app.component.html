@@ -8,6 +8,15 @@
   </md-sidenav>
 
   <div class="content">
+    <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+
+        <input type="text" class="form-control" id="name"
+               required
+               ngModel name="name"
+               #name="ngModel">
+       
+    </form>
+    <app-root [master]="master" (onYell)="yell($event)"></app-root>
   </div>
 
 </md-sidenav-container>

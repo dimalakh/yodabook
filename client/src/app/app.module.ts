@@ -7,19 +7,22 @@ import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { RootModule } from './root/root.module';
+import { RootComponent} from './root/root.component';
+import { SharedModule } from './shared/shared.module';
+import { AppService } from './app.service';
 
 @NgModule({
     imports:[
         BrowserModule,
-        RootModule,
+        SharedModule,
         MaterialModule.forRoot(),
         BrowserAnimationsModule
     ],
     declarations: [
-        AppComponent
+        AppComponent,
+        RootComponent
     ],
-    providers:[],
+    providers:[AppService],
     bootstrap: [AppComponent]
 })
 export class AppModule{
